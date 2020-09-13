@@ -12,8 +12,13 @@ def store_list(request):
 
 def create_view(request):
     form = StoreModelForm()
+    if request.method == "POST":
+        form = StoreModelForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('list')
     context = {
-        "form":form
+        "form":form,
     }
     return render(request, 'create_store.html', context)
 

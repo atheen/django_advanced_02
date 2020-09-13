@@ -10,4 +10,17 @@ def store_list(request):
     return render(request, 'store_list.html', context)
 
 
+def create_view(request):
+    form = StoreModelForm()
+    context = {
+        "form":form
+    }
+    return render(request, 'create_store.html', context)
 
+
+def store_detail(request,slug):
+    store = Store.objects.get(slug=slug)
+    context = {
+        "store":store
+    }
+    return render(request, 'store_detail.html',context)

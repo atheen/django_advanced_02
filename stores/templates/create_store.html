@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+
+{% block title %}Add Store{% endblock title %}
+
+{% block content %}
+  <br>
+  <div class="card">
+    <h5 class="card-header">Add Store</h5>
+    <div class="card-body">
+      <p class="card-text">
+        <form action="{% url 'create' %}" method="POST">
+          {% csrf_token %}
+          {{form|crispy}}
+          <input type="submit" value="Add" class="btn btn-outline-success">
+        </form>
+      </p>
+    </div>
+  </div>
+
+{% endblock content %}
